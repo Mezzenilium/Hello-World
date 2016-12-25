@@ -19,3 +19,23 @@ The code could be this one :
          delay 0.06;
       end loop;
     end Keyboard_Handler;
+
+Un clavier est un buffer de caractères saisis au clavier. On va le définir comme un objet protégé dans un package appelé Buffer. Il doit être protégé car ce n'est pas seulemnet l' utilisateur qui peut l'alimenter mais aussi d'autres taches.
+
+    with Unchecked_Deallocation;
+    package Buffer is
+      N : constant := 128;
+      type Index is mod N;
+      type Char_Array is array (Index) of Character;
+      protected type Clavier is
+        entry Put (X : in Character);
+        entry Get (X : out Character);
+      private
+        A               : Char_Array;
+        In_Ptr, Out_Ptr : Index                := 0;
+        Count           : Integer range 0 .. N := 0;
+      end Clavier;
+      type Clavier_Ptr is access all Clavier;
+      procedure Free is new Unchecked_Deallocation (Clavier, Clavier_Ptr);
+    end Buffer;
+   
