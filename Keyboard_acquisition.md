@@ -20,7 +20,9 @@ The code could be this one :
       end loop;
     end Keyboard_Handler;
 
-Un clavier est un buffer de caractères saisis au clavier. On va le définir comme un objet protégé dans un package appelé Buffer. Il doit être protégé car ce n'est pas seulemnet l' utilisateur qui peut l'alimenter mais aussi d'autres taches.
+Un clavier est un buffer de caractères saisis au clavier. On va le définir comme un objet protégé dans un package appelé Buffer. Il doit être protégé car ce n'est pas seulemnent l' utilisateur qui peut l'alimenter mais aussi d'autres taches et il ne doivent pas se marcher sur les pieds lors des écritures et des lectures.
+
+Oh I realize that I have switched to french language. In fact I explained that a virtual keyboard is a buffer of characters with write and read operations which have to be protected as concurrent access are possible from user and from other tasks.  
 
     with Unchecked_Deallocation;
     package Buffer is
@@ -39,7 +41,7 @@ Un clavier est un buffer de caractères saisis au clavier. On va le définir com
       procedure Free is new Unchecked_Deallocation (Clavier, Clavier_Ptr);
     end Buffer;
 
-Le corps du package est alors :
+Le corps du package est alors : Package body is :
 
     package body Buffer is
      protected body Clavier is 
