@@ -16,7 +16,6 @@ The code could be this one :
          if Available and then Character'Pos (K0) /= 0 then
             Clavier_Courant.Put (K0);
          end if;
-         Get_Immediate (K0, Available);
          delay 0.06;
       end loop;
     end Keyboard_Handler;
