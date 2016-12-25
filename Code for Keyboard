@@ -5,11 +5,11 @@ The code could be this one :
      -- Keyboard_Handler --
      ----------------------
 
-   task body Keyboard_Handler is
+    task body Keyboard_Handler is
       K0        : Character;
       Available : Boolean   := False;
       --  Clavier_Courant : Déclaré au niveau supérieur : Current Keyboard
-   begin
+    begin
       loop
          Get_Immediate (K0, Available);
          if Available and then Character'Pos (K0) /= 0 then
@@ -18,4 +18,4 @@ The code could be this one :
          Get_Immediate (K0, Available);
          delay 0.06;
       end loop;
-   end Keyboard_Handler;
+    end Keyboard_Handler;
