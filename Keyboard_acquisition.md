@@ -38,4 +38,22 @@ Un clavier est un buffer de caractères saisis au clavier. On va le définir com
       type Clavier_Ptr is access all Clavier;
       procedure Free is new Unchecked_Deallocation (Clavier, Clavier_Ptr);
     end Buffer;
-   
+
+Le corps du package est alors :
+
+    package body Buffer is
+     protected body Clavier is 
+      entry Put (X : in Character) when Count < N is
+      begin
+         A (In_Ptr) := X;
+         In_Ptr     := In_Ptr + 1;
+         Count      := Count + 1;
+      end Put;
+      entry Get (X : out Character) when Count > 0 is
+      begin
+         X       := A (Out_Ptr);
+         Out_Ptr := Out_Ptr + 1;
+         Count   := Count - 1;
+      end Get;
+     end Clavier;
+    end Buffer;
