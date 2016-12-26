@@ -13,7 +13,7 @@ On the Console the application would have this aspect :
       MENU SYSTEM TESTING
       MENU SYSTEM IMPROVEMENTS
   
-The navigation in the menu : selection of items, access to sub-menus, acces to upper-menu etc... would be done through the use of the arrows of the keyboard.
+The navigation in the menu : selection of items, access to sub-menus, access to upper-menu etc... would be done through the use of the arrows of the keyboard.
 
 
 The Ada program producing this Menu could be as follows:
